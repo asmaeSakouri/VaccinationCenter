@@ -35,9 +35,7 @@ public class VaccinationController {
                            @RequestParam(name = "size",defaultValue = "3") int size,
                            @RequestParam(name = "keyword",defaultValue = "0") Long id){
         if (id == null || id < 0) {
-            // Gérer le cas où l'ID est nul ou négatif
-            // Vous pouvez rediriger vers une page d'erreur ou effectuer une autre action
-            return "errorPage"; // Remplacez "errorPage" par le nom de votre vue d'erreur
+            return "errorPage";
         }
         Page<Citoyen> citoyens=citoyenRepository.findByCentreVaccination_Id(id, PageRequest.of(page,size));
         model.addAttribute("listCitoyens",citoyens.getContent());
